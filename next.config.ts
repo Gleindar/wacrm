@@ -64,6 +64,11 @@ const SECURITY_HEADERS = [
 ] as const;
 
 const nextConfig: NextConfig = {
+  // Standalone output for Docker: bundles a minimal server.js + only
+  // the node_modules actually required at runtime, so the final
+  // container image doesn't need the full node_modules tree copied in.
+  output: "standalone",
+
   /**
    * Cache-Control policy.
    *
